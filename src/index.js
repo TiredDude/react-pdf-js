@@ -23,7 +23,7 @@ export default class ReactPdfJs extends Component {
 
   componentDidMount() {
     PdfJsLib.GlobalWorkerOptions.workerSrc = '//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.550/pdf.worker.js';
-    PdfJsLib.getDocument(this.props.file).then((pdf) => {
+    PdfJsLib.getDocument({url: this.props.file,withCredentials: true}).then((pdf) => {
       this.setState({ pdf });
       if (this.props.onDocumentComplete) {
         this.props.onDocumentComplete(pdf.pdfInfo.numPages);
